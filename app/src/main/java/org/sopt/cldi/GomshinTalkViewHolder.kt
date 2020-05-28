@@ -1,5 +1,6 @@
 package org.sopt.cldi
 
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.ImageView
@@ -64,11 +65,26 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
     private fun setCategory(category:String) {
         when (category) {
-            "연애상담"-> tv_category.background = category_counselor
-            "곰신미니톡" -> tv_category.background = category_minitalk
-            "공동구매" -> tv_category.background = category_grouppurchase
-            "곰신사진첩" -> tv_category.background = category_gallery
-            "편지보내기" -> tv_category.background = category_sendingletter
+            "연애상담"-> {
+                tv_category.background = category_counselor
+                tv_category.setTextColor(Color.rgb(0,185,177))
+            }
+            "곰신미니톡" -> {
+                tv_category.background = category_minitalk
+                tv_category.setTextColor(Color.rgb(128,206,188))
+            }
+            "공동구매" -> {
+                tv_category.background = category_grouppurchase
+                tv_category.setTextColor(Color.rgb(255,189,209))
+            }
+            "곰신사진첩" -> {
+                tv_category.background = category_gallery
+                tv_category.setTextColor(Color.rgb(255,198,110))
+            }
+            "편지보내기" -> {
+                tv_category.background = category_sendingletter
+                tv_category.setTextColor(Color.rgb(195,165,150))
+            }
        }
     }
 
