@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import kotlinx.android.synthetic.main.gomshin_talk_item.*
 
 class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_list_num = itemView.findViewById<TextView>(R.id.tv_list_num)
@@ -31,11 +30,7 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     fun bind(customData: Data) {
         tv_list_num.text = customData.num.toString()
         tv_title.text = customData.title
-        Glide.with(itemView)
-            .load(loadImage(customData.image))
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .into(img_content_image)
-        imageRadius()
+        loadImage(customData.image)
         tv_user_level.text = customData.level
         tv_user_nick.text = customData.nick
         tv_like_count.text = customData.like.toString()
@@ -46,12 +41,15 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         setMilitaryRank(customData.rank)
     }
 
-    private fun loadImage(image:String?): String? {
-        return if (image == null) {
+    private fun loadImage(image:String?) {
+        if (image == null) {
             img_content_image.visibility = View.INVISIBLE
-            ""
         } else {
-            image
+            Glide.with(itemView)
+                .load(image)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(img_content_image)
+            imageRadius()
         }
     }
 

@@ -29,16 +29,29 @@ class GomshinTalkFlagment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        rv_gomshinTalk.addItemDecoration(GomshinTalkDecoration(7, Color.rgb(247, 247, 247)))
+        setButtonEvent()
         setAdapter(data)
     }
 
     //어뎁터 연결 함수
     private fun setAdapter(gomshinTalkItem : MutableList<Data>) {
+        rv_gomshin_talk.addItemDecoration(GomshinTalkDecoration(7, Color.rgb(247, 247, 247)))
         gomshinTalkAdapter = GomshinTalkAdapter(gomshinTalkItem,this.context!!)
         loadDatas()
-        rv_gomshinTalk.adapter = gomshinTalkAdapter
+        rv_gomshin_talk.adapter = gomshinTalkAdapter
+    }
+
+    private fun setButtonEvent() {
+        btn_best.setOnClickListener {
+            it.isSelected = true
+            btn_recent.isSelected = false
+        }
+        btn_recent.setOnClickListener {
+            it.isSelected = true
+            btn_best.isSelected = false
+        }
+        btn_search.setOnClickListener {  }
+        btn_filter.setOnClickListener {  }
     }
 
 

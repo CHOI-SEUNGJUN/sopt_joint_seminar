@@ -24,8 +24,8 @@ class GomshinTalkDecoration(
         for (i in 0 until parent.childCount) {
             val child = parent.getChildAt(i)
             val param = child.layoutParams as RecyclerView.LayoutParams
-            val dividerTop = child.bottom + param.bottomMargin
-            val dividerBottom = dividerTop + dividerHeight
+            val dividerBottom = child.top + param.topMargin
+            val dividerTop = dividerBottom + dividerHeight
             c.drawRect(
                 child.left.toFloat(),
                 dividerTop.toFloat(),
