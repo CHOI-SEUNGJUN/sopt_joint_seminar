@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class GomshinTalkAdapter (val datas:MutableList<Any>, val context: Context) : RecyclerView.Adapter<GomshinTalkViewHolder>() {
+class GomshinTalkAdapter(var datas: MutableList<Data>, val context: Context) : RecyclerView.Adapter<GomshinTalkViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GomshinTalkViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.gomshin_talk_item,parent,false)
