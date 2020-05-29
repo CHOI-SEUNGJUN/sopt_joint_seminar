@@ -1,4 +1,4 @@
-package org.sopt.cldi
+package org.sopt.cldi.ui
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import org.sopt.cldi.BestGunShopRecyclerView
+import org.sopt.cldi.R
 
 class MainActivity : AppCompatActivity() {
 
