@@ -1,6 +1,6 @@
 package org.sopt.cldi.data
 
-data class BestItem (
+data class BestProductItem (
     val thumb:Int,
     val title:String,
     val price:String

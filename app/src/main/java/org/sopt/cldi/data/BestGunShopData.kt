@@ -1,4 +1,4 @@
-package org.sopt.cldi
+package org.sopt.cldi.data
 
 data class BestGunShopData(
     val rank: Int,

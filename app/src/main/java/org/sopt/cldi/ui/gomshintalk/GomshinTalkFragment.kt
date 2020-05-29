@@ -1,21 +1,21 @@
-package org.sopt.cldi
+package org.sopt.cldi.ui.gomshintalk
 
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_gomshin_talk.*
-import kotlinx.android.synthetic.main.gomshin_talk_item.*
+import org.sopt.cldi.R
+import org.sopt.cldi.data.GomshinTalkData
 
 /**
  * A simple [Fragment] subclass.
  */
-class GomshinTalkFlagment : Fragment() {
+class GomshinTalkFragment : Fragment() {
 
-    private var data =  mutableListOf<Data>()
+    private var data =  mutableListOf<GomshinTalkData>()
 
     private lateinit var gomshinTalkAdapter: GomshinTalkAdapter
 
@@ -34,9 +34,18 @@ class GomshinTalkFlagment : Fragment() {
     }
 
     //어뎁터 연결 함수
-    private fun setAdapter(gomshinTalkItem : MutableList<Data>) {
-        rv_gomshin_talk.addItemDecoration(GomshinTalkDecoration(7, Color.rgb(247, 247, 247)))
-        gomshinTalkAdapter = GomshinTalkAdapter(gomshinTalkItem,this.context!!)
+    private fun setAdapter(gomshinTalkItem : MutableList<GomshinTalkData>) {
+        rv_gomshin_talk.addItemDecoration(
+            GomshinTalkDecoration(
+                7,
+                Color.rgb(247, 247, 247)
+            )
+        )
+        gomshinTalkAdapter =
+            GomshinTalkAdapter(
+                gomshinTalkItem,
+                this.context!!
+            )
         loadDatas()
         rv_gomshin_talk.adapter = gomshinTalkAdapter
     }
@@ -58,7 +67,7 @@ class GomshinTalkFlagment : Fragment() {
     private fun loadDatas() {
         data.apply {
             add(
-                Data(
+                GomshinTalkData(
                     num = 1,
                     title = "곰신톡 1번",
                     level = "Lv.21",
@@ -72,7 +81,7 @@ class GomshinTalkFlagment : Fragment() {
                 )
             )
             add(
-                Data(
+                GomshinTalkData(
                     num = 2,
                     title = "곰신톡 2번(이미지 존재)",
                     level = "Lv.23",
@@ -87,7 +96,7 @@ class GomshinTalkFlagment : Fragment() {
                 )
             )
             add(
-                Data(
+                GomshinTalkData(
                     num = 3,
                     title = "곰신톡3번(이미지 없음)",
                     level = "Lv.22",
@@ -101,7 +110,7 @@ class GomshinTalkFlagment : Fragment() {
                 )
             )
             add(
-                Data(
+                GomshinTalkData(
                     num = 4,
                     title = "군계급 매칭 완료",
                     level = "Lv.22",
@@ -115,7 +124,7 @@ class GomshinTalkFlagment : Fragment() {
                 )
             )
             add(
-                Data(
+                GomshinTalkData(
                     num = 5,
                     title = "카테고리 변경 적용완료",
                     level = "Lv.22",

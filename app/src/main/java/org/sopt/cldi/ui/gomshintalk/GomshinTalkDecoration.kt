@@ -1,4 +1,4 @@
-package org.sopt.cldi
+package org.sopt.cldi.ui.gomshintalk
 
 import android.graphics.Canvas
 import android.graphics.Color

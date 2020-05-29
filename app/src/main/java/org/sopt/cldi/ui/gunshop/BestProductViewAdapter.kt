@@ -1,4 +1,4 @@
-package org.sopt.cldi.ui.gunShop
+package org.sopt.cldi.ui.gunshop
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,12 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.cldi.R
-import org.sopt.cldi.data.BestItem
+import org.sopt.cldi.data.BestProductItem
 
 
-class RecyclerViewAdapter(val context: Context): RecyclerView.Adapter<RecyclerViewAdapter.Holder>(){
+class BestProductViewAdapter(val context: Context): RecyclerView.Adapter<BestProductViewAdapter.Holder>(){
 
-    var data = listOf<BestItem>()
+    var data = listOf<BestProductItem>()
 
     inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
         val thumb :ImageView = view.findViewById(R.id.item_best_product_iv_thumbnail)

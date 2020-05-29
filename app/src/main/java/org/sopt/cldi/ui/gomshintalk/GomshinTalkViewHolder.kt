@@ -1,4 +1,4 @@
-package org.sopt.cldi
+package org.sopt.cldi.ui.gomshintalk
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import org.sopt.cldi.R
+import org.sopt.cldi.data.GomshinTalkData
 
 class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tv_list_num = itemView.findViewById<TextView>(R.id.tv_list_num)
@@ -27,7 +29,7 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val category_gallery = itemView.context.getDrawable(R.drawable.ic_gallery)
     val category_sendingletter = itemView.context.getDrawable(R.drawable.ic_sendingletter)
 
-    fun bind(customData: Data) {
+    fun bind(customData: GomshinTalkData) {
         tv_list_num.text = customData.num.toString()
         tv_title.text = customData.title
         loadImage(customData.image)

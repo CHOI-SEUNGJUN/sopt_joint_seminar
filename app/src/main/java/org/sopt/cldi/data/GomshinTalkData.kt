@@ -1,6 +1,6 @@
-package org.sopt.cldi
+package org.sopt.cldi.data
 
-data class Data(
+data class GomshinTalkData(
     val num: Int,
     val title: String,
     val level: String,
