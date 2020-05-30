@@ -1,14 +1,21 @@
 package org.sopt.cldi.data
 
+import com.google.gson.annotations.SerializedName
+
 data class GomshinTalkData(
-    val num: Int,
     val title: String,
-    val level: String,
-    val nick: String,
-    val like: Int,
-    val comment: Int,
-    val rank: String,
-    val time: String,
-    val image: String?,
-    val category: String
+    val category: String,
+    val commentNum: Int,
+    val likeNum: Int,
+    val createdAt: String,
+    val bestNum: Int,
+    val user:User
+)
+
+data class User(
+    val nickname:String,
+    val level: Int,
+    val military: String,
+    @SerializedName("class")
+    val military_class: String
 )
