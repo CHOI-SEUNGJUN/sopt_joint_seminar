@@ -34,7 +34,7 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         tv_list_num.text = customData.bestNum.toString()
         tv_title.text = customData.title
         //loadImage(customData.)
-        tv_user_level.text = customData.level.toString()
+        tv_user_level.text = "Lv.${customData.level}"
         tv_user_nick.text = customData.nickname
         tv_like_count.text = customData.likeNum.toString()
         tv_comment_count.text = customData.commentNum.toString()
