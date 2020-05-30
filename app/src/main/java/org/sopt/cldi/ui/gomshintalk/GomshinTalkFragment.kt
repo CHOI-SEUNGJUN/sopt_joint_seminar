@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_gomshin_talk.*
+import org.sopt.cldi.NetworkImpl
 import org.sopt.cldi.R
+import org.sopt.cldi.data.BaseResponse
 import org.sopt.cldi.data.GomshinTalkData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * A simple [Fragment] subclass.
@@ -65,81 +70,22 @@ class GomshinTalkFragment : Fragment() {
 
 
     private fun loadDatas() {
-        data.apply {
-            add(
-                GomshinTalkData(
-                    num = 1,
-                    title = "곰신톡 1번",
-                    level = "Lv.21",
-                    nick = "adfadf",
-                    like = 210,
-                    comment = 528,
-                    time = "8시간전",
-                    image = null,
-                    category = "편지보내기",
-                    rank = "해군 일병"
-                )
-            )
-            add(
-                GomshinTalkData(
-                    num = 2,
-                    title = "곰신톡 2번(이미지 존재)",
-                    level = "Lv.23",
-                    nick = "adfadf",
-                    like = 210,
-                    comment = 528,
-                    time = "2시간전",
-                    image = "https://avatars3.githubusercontent.com/u/45380072?s=460&u=b9fc82996ec2cc568a7dfcbf8846944dc16a7ccd&v=4",
-                    category = "곰신미니톡",
-                    rank = "공군 이등병"
+        NetworkImpl.network.getBestGunShop().enqueue(object: Callback<BaseResponse<List<GomshinTalkData>>> {
+            override fun onFailure(call: Call<BaseResponse<List<GomshinTalkData>>>, t: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
 
-                )
-            )
-            add(
-                GomshinTalkData(
-                    num = 3,
-                    title = "곰신톡3번(이미지 없음)",
-                    level = "Lv.22",
-                    nick = "adfadf",
-                    like = 210,
-                    comment = 528,
-                    time = "6시간전",
-                    image = null,
-                    category = "연애상담",
-                    rank = "해병대 병장"
-                )
-            )
-            add(
-                GomshinTalkData(
-                    num = 4,
-                    title = "군계급 매칭 완료",
-                    level = "Lv.22",
-                    nick = "의경가고싶다",
-                    like = 210,
-                    comment = 528,
-                    time = "6시간전",
-                    image = "https://post-phinf.pstatic.net/MjAxNzAyMTlfODkg/MDAxNDg3NDkyNzA2NDk5.-8EvZjoO90a9veRqOynmW7BwbtiLkQUo4om-5BiYiOMg.4_Wk9yRIBcpeIdPzRCrX9ry0qAEZVt4mSWjQTt-mWJMg.PNG/B0E8B1DEC0E5.png",
-                    category = "공동구매",
-                    rank = "의경 상경"
-                )
-            )
-            add(
-                GomshinTalkData(
-                    num = 5,
-                    title = "카테고리 변경 적용완료",
-                    level = "Lv.22",
-                    nick = "육군 병장 이미지 매칭",
-                    like = 210,
-                    comment = 528,
-                    time = "6시간전",
-                    image = null,
-                    category = "곰신사진첩",
-                    rank = "육군병장"
-                )
-            )
-        }
-        gomshinTalkAdapter.datas = data
-        gomshinTalkAdapter.notifyDataSetChanged()
+            override fun onResponse(
+                call: Call<BaseResponse<List<GomshinTalkData>>>,
+                response: Response<BaseResponse<List<GomshinTalkData>>>
+            ) {
+                if (response.isSuccessful) {
+                    gomshinTalkAdapter.datas = response.body()?.data!!
+                    gomshinTalkAdapter.notifyDataSetChanged()
+                }
+            }
+
+        })
     }
 
 }

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import org.sopt.cldi.DateParser
 import org.sopt.cldi.R
 import org.sopt.cldi.data.GomshinTalkData
 
@@ -30,17 +31,17 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val category_sendingletter = itemView.context.getDrawable(R.drawable.ic_sendingletter)
 
     fun bind(customData: GomshinTalkData) {
-        tv_list_num.text = customData.num.toString()
+        tv_list_num.text = customData.bestNum.toString()
         tv_title.text = customData.title
-        loadImage(customData.image)
-        tv_user_level.text = customData.level
-        tv_user_nick.text = customData.nick
-        tv_like_count.text = customData.like.toString()
-        tv_comment_count.text = customData.comment.toString()
+        //loadImage(customData.)
+        tv_user_level.text = "Lv.${customData.level}"
+        tv_user_nick.text = customData.nickname
+        tv_like_count.text = customData.likeNum.toString()
+        tv_comment_count.text = customData.commentNum.toString()
         tv_category.text = customData.category
         setCategory(customData.category)
-        tv_time.text = customData.time
-        setMilitaryRank(customData.rank)
+        tv_time.text = DateParser.calculateDiffDate(customData.createdAt)
+        setMilitaryRank("${customData.military} ${customData.military_class}")
     }
 
     private fun loadImage(image:String?) {
@@ -90,22 +91,22 @@ class GomshinTalkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
     private fun setMilitaryRank(rank:String) {
         when (rank) {
-            "육군 이등병" -> ic_military_rank.setImageResource(R.drawable.ic_army1)
+            "육군 이병" -> ic_military_rank.setImageResource(R.drawable.ic_army1)
             "육군 일병" -> ic_military_rank.setImageResource(R.drawable.ic_army2)
             "육군 상병" -> ic_military_rank.setImageResource(R.drawable.ic_army3)
             "육군 병장" -> ic_military_rank.setImageResource(R.drawable.ic_army4)
 
-            "해군 이등병" -> ic_military_rank.setImageResource(R.drawable.ic_navy1)
+            "해군 이병" -> ic_military_rank.setImageResource(R.drawable.ic_navy1)
             "해군 일병" -> ic_military_rank.setImageResource(R.drawable.ic_navy2)
             "해군 상병" -> ic_military_rank.setImageResource(R.drawable.ic_navy3)
             "해군 병장" -> ic_military_rank.setImageResource(R.drawable.ic_navy4)
 
-            "공군 이등병" -> ic_military_rank.setImageResource(R.drawable.ic_airforce1)
+            "공군 이병" -> ic_military_rank.setImageResource(R.drawable.ic_airforce1)
             "공군 일병" -> ic_military_rank.setImageResource(R.drawable.ic_airforce2)
             "공군 상병" -> ic_military_rank.setImageResource(R.drawable.ic_airforce3)
             "공군 병장" -> ic_military_rank.setImageResource(R.drawable.ic_airforce4)
 
-            "해병대 이등병" -> ic_military_rank.setImageResource(R.drawable.ic_haebyungdae1)
+            "해병대 이병" -> ic_military_rank.setImageResource(R.drawable.ic_haebyungdae1)
             "해병대 일병" -> ic_military_rank.setImageResource(R.drawable.ic_haebyungdae2)
             "해병대 상병" -> ic_military_rank.setImageResource(R.drawable.ic_haebyungdae3)
             "해병대 병장" -> ic_military_rank.setImageResource(R.drawable.ic_haebyungdae4)

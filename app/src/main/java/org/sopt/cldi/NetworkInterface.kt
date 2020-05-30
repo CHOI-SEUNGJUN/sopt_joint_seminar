@@ -8,5 +8,5 @@ import retrofit2.http.GET
 interface NetworkInterface {
 
     @GET("/best")
-    fun getBestGunShop() : Call<BaseResponse<GomshinTalkData>>
+    fun getBestGunShop() : Call<BaseResponse<List<GomshinTalkData>>>
 }
