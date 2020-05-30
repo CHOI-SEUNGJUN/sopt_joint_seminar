@@ -12,6 +12,6 @@ object NetworkImpl {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun getBestGunShop(): NetworkInterface = retrofit.create(NetworkInterface::class.java)
+    val network : NetworkInterface = retrofit.create(NetworkInterface::class.java)
 
 }
